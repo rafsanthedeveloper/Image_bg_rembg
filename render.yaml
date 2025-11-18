@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: Image_bg_rembg
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10  # or 3.9 if you prefer
+    branches:
+      - main
+    region: us  # You can choose a region based on your preference
